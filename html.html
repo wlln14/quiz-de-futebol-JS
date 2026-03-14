@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .pai {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            gap: 20px;
+            border-radius: 100px;
+            box-shadow: 1px 1px 80px #850499a4;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #850499a4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #850499;
+            scale:1.1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pai">
+        <h1>JOGO DA PALAVRA</h1>
+        <h2>Você terá que acertar as respostas com dicas que aparecerão, tente acertar todas!</h2>
+        <button onclick="comecarJogo()">Começar jogo</button>
+    </div>
+
+    <script>
+        const frutas = ["cristiano ronaldo", "messi", "yuri alberto", "hugo sousa", "raphael veiga"]
+        const dicas = ["Jogador português com mais de 900 gols na carreira"
+        , "Jogador argentino famoso", "jogador do Corinthians que atua como atacante e conhecido por seu carisma",
+         "jogador do Corinthians que atua como goleiro e é especialista em pênaltis", "jogador brasileiro que jogou no Palmeiras e atualmente joga no America do México, conhecido por sua habilidade e visão de jogo"]
+
+
+        function comecarJogo() {
+            for (let i = 0; i < frutas.length; i++) {
+                let tentativas = 3
+                while (tentativas > 0) {
+                    let resposta = prompt("Dica: " + dicas[i] + "\nTentativas restantes: " + tentativas)
+                    if (resposta.toLowerCase() === frutas[i]) {
+                        alert("Parabéns! Você acertou!")
+                        break
+                    } else {
+                        tentativas--
+                        if (tentativas === 0) {
+                            alert("Fim! A resposta correta era: " + frutas[i])
+                        } else {
+                            alert("Resposta incorreta. Tente novamente!")
+                        }
+                    }
+                }
+            }
+                alert("Jogo encerrado! Obrigado por jogar.")
+        }
+    </script>
+
+</body>
+
+</html>
