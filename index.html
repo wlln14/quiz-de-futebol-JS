@@ -9,13 +9,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #141414;
+            background: linear-gradient(160deg, #141414 87%, #850499 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            color: #fff;
+            color: #ffffffbd;
         }
 
         .pai {
@@ -26,24 +26,46 @@
             padding: 60px;
             gap: 20px;
             border-radius: 100px;
-            box-shadow: 1px 1px 80px #850499a4;
+            
         }
 
         button {
-            padding: 10px 20px;
+            padding: 15px 25px;
             font-size: 16px;
-            color: #fff;
-            background-color: #850499a4;
+            width: 20%;
+            color: #ffffffbd;
+            background-color: #141414;
+            box-shadow: inset 1px 1px 40px #850499a4, 1px 1px 5px #850499a4;
             border: none;
-            border-radius: 5px;
+            border-radius: 15px;
             cursor: pointer;
             transition: 0.3s ease-in-out;
         }
 
         button:hover {
             background-color: #850499;
-            scale:1.1;
+            box-shadow: inset 1px 1px 40px #850499, 1px 1px 20px #850499;
+            scale:1.05;
+            border-radius: 25px;
         }
+        
+        .dicas {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            padding: 40px;
+            margin: 20px;
+            box-shadow: inset 1px 1px 30px #850499a4, 1px 1px 30px #850499a4;
+            border-radius: 40px;
+            color: #ffffff9f;
+        }
+
+        .dicas hr {
+            width: 80%;
+            border-color: #850499;
+            filter: blur(3px);
+        }
+
     </style>
 </head>
 
@@ -53,15 +75,24 @@
         <h1>JOGO DA PALAVRA</h1>
         <h2>Você terá que acertar as respostas com dicas que aparecerão, tente acertar todas!</h2>
         <button onclick="comecarJogo()">Começar jogo</button>
+        <div class="dicas"></div>
     </div>
 
     <script>
+        const dicasHTML = document.querySelector(".dicas")
         const frutas = ["cristiano ronaldo", "messi", "yuri alberto", "hugo sousa", "raphael veiga"]
         const dicas = ["Jogador português com mais de 900 gols na carreira"
-        , "Jogador argentino famoso", "jogador do Corinthians que atua como atacante e conhecido por seu carisma",
-         "jogador do Corinthians que atua como goleiro e é especialista em pênaltis", "jogador brasileiro que jogou no Palmeiras e atualmente joga no America do México, conhecido por sua habilidade e visão de jogo"]
+        , "Jogador argentino famoso", "Jogador do Corinthians que atua como atacante e conhecido por seu carisma",
+         "Jogador do Corinthians que atua como goleiro e é especialista em pênaltis", "Jogador brasileiro que jogou no Palmeiras e atualmente joga no America do México, conhecido por sua habilidade e visão de jogo"]
+        
+        let conteudoAcumulado = "";
 
+        for (let j = 0; j < dicas.length; j++) {
+            conteudoAcumulado += "<h3>DICA " + (j + 1) + ": <strong>"  + dicas[j] + "</strong></h3><hr>"
+        }
 
+        dicasHTML.innerHTML = conteudoAcumulado
+        
         function comecarJogo() {
             for (let i = 0; i < frutas.length; i++) {
                 let tentativas = 3
